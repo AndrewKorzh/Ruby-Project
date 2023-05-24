@@ -8,4 +8,9 @@ module Diff
   def self.hello
     "hello world"
   end
+
+  def self.sum(a,b)
+    return a+b
+  end
+  
 end
