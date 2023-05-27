@@ -37,8 +37,8 @@ module Diff
     end
   end
 
-  polynomial = Polynomial.new("x^2+4*x+3-y")
-  puts polynomial.differentiate("x") # Output: 2*x+4
+  polynomial = Polynomial.new("x^2+4*x+3-y+2*x^8")
+  puts polynomial.differentiate("y") # Output: 2*x+4
 
 
     end
