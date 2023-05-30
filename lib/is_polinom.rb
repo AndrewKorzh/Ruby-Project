@@ -39,6 +39,8 @@ def is_polinom?(p)
   return true
 end
 
+
+#
 s2 = []
 s2.push("x^2+5*x-4")
 s2.push("x^2+5*x+5")
