@@ -40,39 +40,3 @@ def is_polinom?(p)
 end
 
 
-#
-s2 = []
-s2.push("x^2+5*x-4")
-s2.push("x^2+5*x+5")
-s2.push("x-2")
-s2.push("4*x+10*x^2-134")
-s2.push("x+3-y")
-s2.push("2x")
-s2.push("9xi")
-s2.push("x^q-5")
-s2.push("-")
-
-s2.push("x^2+")
-s2.push("x^2+5**x+5")
-s2.push("x-2^2")
-s2.push("4*x+10*x^2-13[4]")
-s2.push("x+3-y-")
-s2.push("2x2")
-s2.push("aboba")
-s2.push("x^q-5")
-s2.push("")
-
-s2.push("x^222222+22222*x^55555")
-s2.push("x^2+5*x+5+y^222-z-x")
-s2.push("x-2+x+x+x+x-x-x")
-s2.push("4*x+10*x^2-13")
-s2.push("x+3-y-xyz")
-s2.push("2*x+2*ccccc")
-s2.push("aboba")
-s2.push("x^q-5")
-s2.push("")
-
-(s2.length).times do |i|
-  p s2[i]
-  p is_polinom?(s2[i])
-end
