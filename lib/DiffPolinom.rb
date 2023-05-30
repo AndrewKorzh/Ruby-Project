@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 # A class for differentiating polynomials
+require 'is_polinom'
 class DiffPolinom
   # method for differentiating polynomials
   # @param polynomial [string] String with a polynomial to be differentiated
@@ -7,7 +8,9 @@ class DiffPolinom
   # @return [String (frozen)] String with the result of differentiation of the input polynomial
   def self.diff_polinom(polynomial, name)
     string_list_1 = self.polin_to_string_list(polynomial, name)
-
+    if !is_polinom?(polynomial)
+      p "string could be malformed"
+    end
     var_list = self.str_lst_to_var_string(string_list_1, name)
 
     var_list.each { |v| v.diff }
@@ -56,46 +59,6 @@ class DiffPolinom
       @k *= @n
       @n -= 1
     end
-  end
-  def is_number?(s)
-    s =~ /[0-9]/
-  end
-
-  def is_letter?(s)
-    s =~ /[A-Za-z]/
-  end
-
-  def is_polinom?(p)
-    s = '*^+-'
-    ss = '+-'
-    (p.length - 1).times do |i|
-      if (s.include? p[i]) && (s.include? p[i+1])
-        return false
-      end
-      if is_number?(p[i]) && is_letter?(p[i+1])
-        return false
-      end
-
-    end
-    (p.length - 2).times do |i|
-      if is_letter?(p[i]) && p[i+1] == '*' && is_letter?(p[i+2])
-        return false
-      end
-    end
-    i = 0
-    while i < p.length
-      if p[i] == '^'
-        j = i + 1
-        while j < p.length && s.include?(p[j]) == false
-          if is_letter?(p[j])
-            return false
-          end
-          j += 1
-        end
-      end
-      i += 1
-    end
-    return true
   end
 
 
@@ -193,4 +156,5 @@ class DiffPolinom
     return lst
   end
 end
+
 
