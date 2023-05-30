@@ -7,7 +7,7 @@ class DiffPolinom
   # @return [String (frozen)] String with the result of differentiation of the input polynomial
   def self.diff_polinom(polynomial, name)
     string_list_1 = self.polin_to_string_list(polynomial, name)
-    
+
     var_list = self.str_lst_to_var_string(string_list_1, name)
 
     var_list.each { |v| v.diff }
