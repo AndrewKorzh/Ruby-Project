@@ -86,4 +86,30 @@ class TestDiff < Minitest::Test
     vars = []
     assert_equal "0", DiffPolinom.lst_var_to_string(vars)
   end
+
+  def test_is_polinom
+    assert is_polinom?("2")
+    assert is_polinom?("2+6-5")
+    assert is_polinom?("x")
+    assert is_polinom? "y+x"
+
+    assert is_polinom? "2*x+3"
+    assert is_polinom? "p+t-m-l+4"
+    assert is_polinom? "x^4"
+    assert is_polinom? "3*x"
+
+    assert is_polinom? "3*x^2-6*y+9"
+    assert is_polinom? "-3*x^2-6*y+9"
+    assert is_polinom? "x^200-634*y+96460"
+  end
+
+  def test_is_not_polinom
+    assert !(is_polinom? "5x")
+    assert !(is_polinom? "56r")
+    assert !(is_polinom? "5x+7")
+    assert !(is_polinom? "x^2+4y")
+    assert !(is_polinom? "x^^2")
+    assert !(is_polinom? "x^2++6")
+    assert !(is_polinom? "--x")
+  end
 end
