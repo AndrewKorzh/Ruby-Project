@@ -1,3 +1,27 @@
+def check_polin(p)
+  s = "+-*^"
+  # Проверка подряд идущих знаков
+  s.each_char do |c1|
+    s.each_char do |c2|
+      if p.include?("#{c1}#{c2}")
+        return false
+      end
+    end
+  end
+
+  (p.length - 1).times do |i|
+    # 5x - no
+    if p[i].is_a?(Numeric) && is_letter?(p[i + 1])
+      return false
+    end
+    # x5 - no
+    if is_letter?(p[i]) && p[i + 1].is_a?(Numeric)
+      return false
+    end
+  end
+  return true
+end
+
 def is_number?(s)
   s =~ /[0-9]/
 end
@@ -7,10 +31,9 @@ def is_letter?(s)
 end
 
 def is_polinom?(p)
-  i = 0
   s = '*^+-'
   ss = '+-'
-  while i < p.length - 1
+  (p.length - 1).times do |i|
     if (s.include? p[i]) && (s.include? p[i+1])
       return false
     end
@@ -20,23 +43,21 @@ def is_polinom?(p)
     if is_letter?(p[i]) && p[i+1]!='^' && (ss.include? p[i+1] == false)
       return false
     end
-    i += 1
   end
-  i = 0
-  while i < p.length - 2
+  (p.length - 2).times do |i|
     if is_letter?(p[i]) && p[i+1] == '*' && is_letter?(p[i+2])
       return false
     end
-    i += 1
   end
   i = 0
   while i < p.length
     if p[i] == '^'
-      while s.include? p[i+1] == false && i < p.length
-        if is_letter?(p[i+1])
+      j = i + 1
+      while j < p.length && s.include?(p[j]) == false
+        if is_letter?(p[j])
           return false
         end
-        i += 1
+        j += 1
       end
     end
     i += 1
