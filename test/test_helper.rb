@@ -4,5 +4,5 @@ $LOAD_PATH.unshift File.expand_path("../lib", __dir__)
 require 'DiffPolinom'
 
 require "minitest/autorun"
-require 'minitest/rm_reporter_plugin'
+require 'minitest/reporters'
 Minitest::Reporters.use! unless ENV['RM_INFO']
