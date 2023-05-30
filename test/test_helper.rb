@@ -5,5 +5,5 @@ require "diff"
 require 'DiffPolinom'
 
 require "minitest/autorun"
-require 'minitest/reporters'
+require 'minitest/rm_reporter_plugin'
 Minitest::Reporters.use! unless ENV['RM_INFO']
